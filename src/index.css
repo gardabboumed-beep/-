@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Cairo:wght@400;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Tajawal", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Arial", sans-serif;
+  --font-elegant: "Tajawal", sans-serif;
+  --font-formal: "Amiri", serif;
+  --font-standard: "Cairo", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900;
+  }
+}
+
+/* Custom Classes for extra styling if needed */
+.tunisian-invoice-border {
+  border: 4px double #0f172a;
+}
+
+.text-justify-arabic {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+@media print {
+  .no-print, button, nav, .settings-panel {
+    display: none !important;
+  }
+  
+  .print-only {
+    display: block !important;
+  }
+  
+  body {
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    color: black !important;
+  }
+  
+  @page {
+    margin: 1cm;
+    size: A4;
+  }
+  
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+  }
+  
+  .print-container {
+    box-shadow: none !important;
+    border: none !important;
+    background: white !important;
+    width: 100% !important;
+  }
+
+  .print-content {
+    background: white !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+  
+  /* Ensure colors and borders appear in print */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    border-color: black !important;
+  }
+
+  /* Force headers to always stay together with content */
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+  
+  table {
+    page-break-inside: auto;
+  }
+  
+  tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+}
+
+.print-only {
+  display: none;
+}
